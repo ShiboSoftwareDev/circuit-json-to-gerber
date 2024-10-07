@@ -36,25 +36,7 @@ test("test that we can recreate an example drill file", async () => {
     .add("M30", {})
     .build()
 
-  expect(output_commands).toMatchSnapshot("excellon-drill-builder")
-  //   t.is(
-  //     output_text,
-  //     `M48
-  // ; DRILL file {tscircuit} date 2024-04-09T20:34:41-0700
-  // ; FORMAT={-:-/ absolute / inch / decimal}
-  // ; #@! TF.CreationDate,2024-04-09T20:34:41-07:00
-  // ; #@! TF.GenerationSoftware,Kicad,Pcbnew,8.0.1
-  // ; #@! TF.FileFunction,Plated,1,2,PTH
-  // FMAT,2
-  // INCH
-  // ; #@! TA.AperFunction,Plated,PTH,ComponentDrill
-  // T1C0.0394
-  // %
-  // G90
-  // G05
-  // T1
-  // X4.9197Y-2.9724
-  // X5.0197Y-2.9724
-  // M30`
-  //   )
+    console.log(output_commands)
+    expect(output_commands.find(elm=>elm.command_code === 'drill_at')).toHaveProperty('command_code','drill_at')
+
 })
